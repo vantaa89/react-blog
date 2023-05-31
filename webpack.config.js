@@ -33,6 +33,10 @@ module.exports = {
     extensions: [".jsx", ".js"],
   },
   target: "web",
+  watchOptions: {
+    ignored: /node_modules/,
+    poll: 1000,
+  },
   performance: {
     hints: false,
   },
