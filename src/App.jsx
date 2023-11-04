@@ -1,9 +1,26 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css'
 import bootstrap from "bootstrap";
-import './style.css'
 import MarkdownRenderer from './components/MarkdownRenderer.js';
+
+import './style.css'
+
+import textpath from '../contents/main.md';
+
+
+const colorPalette = (0x2B4141, 0x03b1d2, 0x34e4ea, 0x8ab9b5, 0xc8c2ae);
+
+const readFile = async (path) => {
+  try{
+    const res = await fetch(path);
+    const markdown = await res.text();
+    return markdown;
+  } catch (error) {
+    console.log("Error while reading file " + path);
+    return null;
+  }
+}
 
 const NavBar = () => {
   return (
@@ -33,14 +50,28 @@ const NavBar = () => {
 
 
 const HomePage = () => {
+  const [markdown, setMarkdown] = useState('');
+
+  useEffect(() => {
+    const fetchTextFile = async () => {
+      try {
+        const response = await fetch(textpath);
+        const text = await response.text();
+        setMarkdown(text);
+      } catch (error) {
+        console.error('Error fetching the text file: ', error);
+      }
+    };
+
+    fetchTextFile();
+  }, []);
+
   return (
     <div id="main-content">
-      <h1>Hello!</h1>
-      <p>Lorem ipsum dolor sit amet</p>
-      <MarkdownRenderer/>
+      <MarkdownRenderer markdown={markdown} />
     </div>
   );
-}
+};
 
 const CurriculumVitae = () => {
   return (

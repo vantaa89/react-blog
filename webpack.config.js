@@ -21,6 +21,10 @@ module.exports = {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.(txt|md)$/,
+        use: ["file-loader"],
+      }
     ],
   },
   devServer: {
