@@ -7,10 +7,17 @@ import Axios from 'axios'
 
 import './style.css'
 
-import textpath from '../contents/main.md';
+import introPath from '../contents/intro.md';
+import cvPath from '../contents/cv.md';
 
 
 const Header = () => {
+  const pages = [
+    {name: 'Home', link: '/'},
+    {name: 'Posts', link: '/posts'},
+    {name: 'About Me', link: '/about'},
+  ]
+
   return (
     <nav className="header navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid container">
@@ -20,15 +27,13 @@ const Header = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">Home</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="post">Posts</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="about">About Me</a>
-            </li>
+            {pages.map((item, index) => {
+              return (
+                <li key={Date.now()} className="nav-item">
+                  <a className="nav-link" href={item.link}>{item.name}</a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
@@ -47,33 +52,64 @@ const Footer = () => {
 }
 
 import myImage from "../contents/profile_pic.jpg"
+import nightOwl from "react-syntax-highlighter/dist/esm/styles/prism/night-owl.js";
 const HomePage = () => {
   const [markdown, setMarkdown] = useState('');
 
   useEffect(() => {
-    Axios.get(textpath)
+    Axios.get(introPath)
     .then((response) => setMarkdown(response.data));
   }, []);
 
   return (
-    <div id="intro">
-      {/* <img src={myImage} alt={"my profile pic"} width="70%" /> */}
-      <MarkdownRenderer markdown={markdown} />
+    <div id="intro" className="row">
+      <div className="col-md-7">
+        <MarkdownRenderer markdown={markdown} />
+      </div>
+      <div className="col-md-3">
+        <img className="intro-image" src="https://placeholder.co/300x200/"/>
+      </div>
     </div>
   );
 };
 
 const CurriculumVitae = () => {
+  const [markdown, setMarkdown] = useState('');
+
+  useEffect(() => {
+    Axios.get(cvPath)
+    .then((response) => setMarkdown(response.data));
+  }, [])
   return (
     <div>
-      <h1>This is the CV Page</h1>
-      <p>CV</p>
+      <h1 id="cv-english-name">Seojune Lee</h1>
+      <p id="cv-korean-name">이서준</p>
+      <MarkdownRenderer markdown={markdown} />
     </div>
   );
 }
 
 const PostPage = () => {
-
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    Axios.get("https://jsonplaceholder.typicode.com/posts")
+    .then(response => setPosts(response.data));
+  }, []);
+  return (
+    <>
+      <h1>Post Page</h1>
+      {posts.map((v, i) => {
+        return (
+          <div className="card" key={i}>
+            <h3>{v.title}</h3>
+            <div>userId = {v.userId}, id = {v.id}</div>
+            <div>{v.body}</div>
+          </div>
+        );
+        
+      })}
+    </>
+  );
 }
 
 const App = () => {

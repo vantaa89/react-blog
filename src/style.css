@@ -6,15 +6,29 @@
     margin-bottom: 20px;
 }
 
+button.navbar-toggler{
+    border-width: 0;
+}
+
+
 #intro h1{
     align-self: center;
-    /* color: var(--main-theme-color); */
+    color: var(--main-theme-color);
 }
 
-#intro h3{
-    color: var(--main-theme-color)
+#intro .intro-image{
+    border-radius: 4px;
 }
 
+#cv-english-name{
+    text-align: center;
+    color: var(--main-theme-color);
+}
+#cv-korean-name{
+    font-family: 'Noto Sans Kr', sans-serif;
+    color: #333;
+    text-align: center;
+}
 
 .footer{
     margin-top: 50px;
@@ -22,24 +36,14 @@
 }
 
 #footer-text{
+    margin-bottom: 0px;
     padding: 10px;
     font-size: 9pt;
     font-weight: 200;
     color: #fafafa;
 }
 
-a:link{
-    color:gray;
-}
-
-a:visited{
-    color:gray;
-}
-
-a.active{
-    color:gray;
-}
-
-a:hover{
-    color:gray;
-}
+a:link{         color:gray;}
+a:visited{      color:gray;}
+a.active{       color:gray;}
+a:hover{        color:gray;}
