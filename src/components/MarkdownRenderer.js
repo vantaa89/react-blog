@@ -7,6 +7,7 @@ import {materialDark} from 'react-syntax-highlighter/dist/esm/styles/prism'
 import remarkMath from 'remark-math';
 import remarkImages from 'remark-images'
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
 import 'katex/dist/katex.min.css';
 
 
@@ -23,9 +24,11 @@ const MarkdownRenderer = ({markdown}) => {
             <ReactMarkdown
                 children={markdown}
                 remarkPlugins={[remarkGfm, remarkMath]}
-                rehypePlugins={[rehypeKatex]}
+                rehypePlugins={[rehypeKatex, rehypeRaw]}
                 escapeHTML={true}
                 components={{
+                    h2: 'h3',
+                    h3: 'h4',
                     p: (props) => <p style={{ lineHeight: '1.5', margin: '10px 0'}}>{props.children}</p>,
                     li: (props) => <li style={{lineHeight: '1.8'}}>{props.children}</li>,
                     code: (props) => {
