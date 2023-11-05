@@ -24,7 +24,20 @@ module.exports = {
       {
         test: /\.(txt|md)$/,
         use: ["file-loader"],
-      }
+      },
+      {
+        test: /\.(png|jpe?g|gif|HEIC)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/',
+              publicPath: 'images/',
+            },
+          },
+        ],
+      },
     ],
   },
   devServer: {

@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import {materialDark} from 'react-syntax-highlighter/dist/esm/styles/prism'
 import remarkMath from 'remark-math';
+import remarkImages from 'remark-images'
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
 
@@ -16,14 +17,18 @@ const MarkDownStyle = styled.div`
 
 const MarkdownRenderer = ({markdown}) => {
     console.log(markdown);
+
     return (
         <MarkDownStyle>
             <ReactMarkdown
                 children={markdown}
                 remarkPlugins={[remarkGfm, remarkMath]}
                 rehypePlugins={[rehypeKatex]}
+                escapeHTML={true}
                 components={{
-                    code(props) {
+                    p: (props) => <p style={{ lineHeight: '1.5', margin: '10px 0'}}>{props.children}</p>,
+                    li: (props) => <li style={{lineHeight: '1.8'}}>{props.children}</li>,
+                    code: (props) => {
                         const {children, className, node, ...rest} = props
                         const match = /language-(\w+)/.exec(className || '')
                         return match ? (
@@ -39,7 +44,8 @@ const MarkdownRenderer = ({markdown}) => {
                             {children}
                         </code>
                         )
-                    }
+                    }, 
+                    image: (props) => <img src={props.src} alt={props.alt | ''} style={{ maxWidth: '100%' }} />,
                     }}
                 />
         </MarkDownStyle>

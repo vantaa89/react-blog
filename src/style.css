@@ -1,3 +1,45 @@
-nav{
-    margin-bottom: 10px;
+:root {
+    --main-theme-color: #499fc8;
+}
+
+.header{
+    margin-bottom: 20px;
+}
+
+#intro h1{
+    align-self: center;
+    /* color: var(--main-theme-color); */
+}
+
+#intro h3{
+    color: var(--main-theme-color)
+}
+
+
+.footer{
+    margin-top: 50px;
+    background-color: #aaa;
+}
+
+#footer-text{
+    padding: 10px;
+    font-size: 9pt;
+    font-weight: 200;
+    color: #fafafa;
+}
+
+a:link{
+    color:gray;
+}
+
+a:visited{
+    color:gray;
+}
+
+a.active{
+    color:gray;
+}
+
+a:hover{
+    color:gray;
 }
