@@ -1,52 +1,61 @@
 # Hello!
+I am an undergraduate student majoring [Electrical and Computer Engineering](https://ece.snu.ac.kr/) at Seoul National University. My academic interest includes deep learning and computer systems. 
+Before I began studying at SNU, I was honored to be able to study at [Korea Science Academy of KAIST](https://ksa.hs.kr/).
 
-I am an undergraduate student studying in Department of Electrical and Computer Engineering, Seoul National University.
+Currently, I am on leave of absence to serve in Repulic of Korea Army.
+<>
+---
+### Education
 
-# Markdown Test
+**Seoul National University**, Seoul, South Korea
+* Dept. of Electrical & Computer Engineering
+* GPA: 4.24/4.30
+* Mar. 2021 - Present
 
-# 헤딩
-**굵게**
-일반 텍스트
+**Korea Science Academy**, Busan, South Korea
+* Feb. 2018 - Feb. 2021
+* GPA: 4.17/4.30 (rank: 4/130)
+* Graduated with distinction in physics
 
-```c
-#include<stdio.h>
-int main(){
-    printf("Hello, World!");
-}
-```
+---
 
-*기울이기*
+### Research Experiences
+**Laboratory of Imaging Science and Technology**(LIST), SNU
+* Jun. 2022 - Aug. 2022
+* Studied correction of motion artifacts in MR images by training deep learning models on simulated images.
 
+---
 
-$x=\frac{-b \pm \sqrt{b^2-4ac}}{2a}$
+### Honors and Awards
+##### (Merit-Based) Scholarships
 
+**Hanseong Nobel Scholarship for the Gifted**, Hanseong Sonjaehan Foundation, 2019-2020
+* Total of $10000 equivalent
 
-> 인용문
+**National Scholarship for Science and Engineering**, Korea Student Aid Foundation(KOSAF), 2021-2026(Expected)
+* Full tuition
 
-this is `inline code`
-# GFM
+##### Awards
 
-## Autolink literals
+* Bronze Prize, Korea Olympiad in Informatics, Ministry of Science and ICT, 2018
+* Commendation from Busan Governor of Education, 2021
 
-www.example.com, https://example.com, and contact@example.com.
+---
 
-## Footnote
+### Relevant Courses
 
-A note[^1]
+* Digital Logic Design & Lab, Introduction to Electromagnetism with Practice, Mathematical Foundations of Deep Neural Networks
+* Signals and Systems, Introduction to Circuit Theory and Laboratory, Computational Linguistics
+* Creative Engineering Design, Programming Methodology, Linear Algebra for Electrical Systems
 
-[^1]: Big note.
+---
 
-## Strikethrough
+### Skills
+**Programming Languages**
+* C++, Python, JavaScript
 
-~one~ or ~~two~~ tildes.
+**Frameworks**
+* React.js, Django, PyTorch
 
-## Table
-
-| a | b  |  c |  d  |
-| - | :- | -: | :-: |
-
-## Tasklist
-
-* [ ] to do
-* [x] done
-
+**Tools**
+* LaTeX
