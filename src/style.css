@@ -6,19 +6,16 @@
     margin-bottom: 20px;
 }
 
-#intro h1{
-    align-self: center;
-    /* color: var(--main-theme-color); */
-}
-
 #intro h3{
     color: var(--main-theme-color)
 }
 
 
+
 .footer{
     margin-top: 50px;
-    margin-bottom: 10px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
     background-color: #aaa;
 }
 
@@ -28,6 +25,24 @@
     font-weight: 200;
     color: #fafafa;
 }
+
+#cv-title{
+    text-align: center;
+    color: var(--main-theme-color);
+    margin: 50px;
+    animation-name: appear;
+    animation-duration: 1s;
+}
+
+@keyframes appear{
+    from {
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
 
 a:link{
     color:gray;
