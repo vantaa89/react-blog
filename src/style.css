@@ -6,30 +6,54 @@
     margin-bottom: 20px;
 }
 
-#intro h3{
-    color: var(--main-theme-color)
+button.navbar-toggler{
+    border-width: 0;
 }
 
 
-
-.footer{
-    margin-top: 50px;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-    background-color: #aaa;
+#intro h1{
+    align-self: center;
+    color: var(--main-theme-color);
 }
 
-#footer-text{
-    padding: 10px;
-    font-size: 9pt;
-    font-weight: 200;
-    color: #fafafa;
+#intro .intro-image{
+    border-radius: 4px;
 }
 
-#cv-title{
+/* Post Page */
+
+.post {
+    animation-name: fade-bottom;
+    animation-duration: 1s;
+}
+
+@keyframes fade-bottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+/* CV Page */
+
+#cv-english-name{
     text-align: center;
     color: var(--main-theme-color);
-    margin: 50px;
+}
+
+#cv-korean-name{
+    font-family: 'Noto Sans Kr', sans-serif;
+    color: #333;
+    font-size: large;
+    text-align: center;
+}
+
+.appear-effect{
     animation-name: appear;
     animation-duration: 1s;
 }
@@ -43,19 +67,29 @@
     }
 }
 
-
-a:link{
-    color:gray;
+.cv h3{
+    color: var(--main-theme-color);
 }
 
-a:visited{
-    color:gray;
+
+
+.footer{
+    margin-top: 50px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    background-color: #aaa;
 }
 
-a.active{
-    color:gray;
+#footer-text{
+    margin-bottom: 0px;
+    padding: 10px;
+    font-size: 9pt;
+    font-weight: 200;
+    color: #fafafa;
 }
 
-a:hover{
-    color:gray;
-}
+
+a:link{         color:gray;}
+a:visited{      color:gray;}
+a.active{       color:gray;}
+a:hover{        color:gray;}

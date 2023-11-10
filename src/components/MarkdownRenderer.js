@@ -27,10 +27,12 @@ const MarkdownRenderer = ({markdown}) => {
                 rehypePlugins={[rehypeKatex, rehypeRaw]}
                 escapeHTML={true}
                 components={{
+                    h1: 'h2',
                     h2: 'h3',
                     h3: 'h4',
                     p: (props) => <p style={{ lineHeight: '1.5', margin: '10px 0'}}>{props.children}</p>,
                     li: (props) => <li style={{lineHeight: '1.8'}}>{props.children}</li>,
+                    hr: (props) => <hr style={{margin: '20px 0'}}></hr>,
                     code: (props) => {
                         const {children, className, node, ...rest} = props
                         const match = /language-(\w+)/.exec(className || '')

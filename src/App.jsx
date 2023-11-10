@@ -7,12 +7,15 @@ import Axios from 'axios'
 
 import './style.css'
 
-import mainIntroPath from '../contents/main.md';
+import introPath from '../contents/intro.md';
 import cvPath from '../contents/cv.md';
 
-const Header = (props) => {
-  const pages = [{link: '/', name: 'Home'}, {link: '/post', name: 'Posts'}, {link: '/about', name: 'About Me'}];
-
+const Header = () => {
+  const pages = [
+    {name: 'Home', link: '/'},
+    {name: 'Posts', link: '/posts'},
+    {name: 'About Me', link: '/about'},
+  ]
   return (
     <nav className="header navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid container">
@@ -22,12 +25,13 @@ const Header = (props) => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
-            {pages.map((item, idx) => 
-              <li className="nav-item">
-                <a className={"nav-link"}
-                  aria-current="page" href={item.link}>{item.name}</a>
-              </li>
-            )}
+            {pages.map((item, index) => {
+              return (
+                <li key={Date.now()} className="nav-item">
+                  <a className="nav-link" href={item.link}>{item.name}</a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
@@ -49,50 +53,65 @@ const HomePage = () => {
   const [markdown, setMarkdown] = useState('');
 
   useEffect(() => {
-    const timeOut = 5000;
-    Axios.get(mainIntroPath, {timeOut})
+    Axios.get(introPath)
     .then((response) => setMarkdown(response.data));
   }, []);
 
   return (
-    <div id="intro">
-      <h1>Hello!</h1>
-      <div class="row">
-        <div class="col-md-7">
-          <MarkdownRenderer markdown={markdown} />
-        </div>
-        <div class="col-md-3">
-          <img src="https://placeholder.co/300x200/" alt="my profile picture" />
-        </div>
+    <div id="intro" className="row">
+      <div className="col-md-7">
+        <MarkdownRenderer markdown={markdown} />
+      </div>
+      <div className="col-md-3">
+        <img className="intro-image" src="https://placeholder.co/300x200/"/>
       </div>
     </div>
   );
 };
 
 const CurriculumVitae = () => {
-  const [cvMarkdown, setCVMarkdown] = useState('');
+  const [markdown, setMarkdown] = useState('');
 
   useEffect(() => {
-    const timeOut = 5000;
-    Axios.get(cvPath, {timeOut})
-    .then((response) => setCVMarkdown(response.data));
-  }, []);
-
+    Axios.get(cvPath)
+    .then((response) => setMarkdown(response.data));
+  }, [])
   return (
-    <div>
-      <h1 id="cv-title">Seojune Lee (이서준)</h1>
-      <MarkdownRenderer markdown={cvMarkdown}/>
+    <div className="cv">
+      <h1 id="cv-english-name">Seojune Lee</h1>
+      <p id="cv-korean-name">이서준</p>
+      <MarkdownRenderer markdown={markdown} />
     </div>
   );
 }
 
-const Posts = () => {
+const PostPage = () => {
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    Axios.get("https://jsonplaceholder.typicode.com/posts")
+    .then(response => setPosts(response.data));
+  }, []);
   return (
     <>
-      <h1>Posts</h1>
-      <p>This is the post page</p>
+      <h1 style={{marginBottom: '20px'}}>Post Page</h1>
+      {posts.map((v, i) => {
+        return (
+          <div className="post card" key={i} style={{margin: "10px 0"}}>
+            <div className="card-header">
+              <h3 className="card-title">{v.title}</h3>
+              
+            </div>
+            <div className="card-body">
+              <div className="card-text">{v.body}</div>
+              <div className="card-text"><small class="text-muted">Written by user{v.userId} (post id = {v.id})</small></div>
+              
+            </div>
+          </div>
+        );
+        
+      })}
     </>
-  )
+  );
 }
 
 const App = () => {
@@ -104,7 +123,7 @@ const App = () => {
           <div className="content">
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/post" element={<Posts />} />
+              <Route path="/posts" element={<PostPage />} />
               <Route path="/about" element={<CurriculumVitae />} />
             </Routes>
           </div>
